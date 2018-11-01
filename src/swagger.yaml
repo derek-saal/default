@@ -1,0 +1,20 @@
+swagger: "2.0"
+info:
+  # ToDo Fill this in
+  description: ""
+  version: "0.1"
+  # ToDo Fill this in
+  title: ""
+  contact:
+    email: "derek@saal.ai"
+paths:
+  /health_check:
+    get:
+      operationId: app.get_health_check
+      summary: Return status
+      responses:
+        200:
+          description: API is healthy
+          schema:
+            type: boolean
+definitions:
