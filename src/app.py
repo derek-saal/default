@@ -6,13 +6,15 @@ import connexion
 from flask import Flask
 from flask_cors import CORS
 
+this_file = Path(__file__)
+proj_dir = Path(__file__).parents[1]
 logging.basicConfig(stream=sys.stdout,
                     level=logging.INFO,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-                    datefmt='%m-%d %H:%M')
-# ToDo Fill in project name
-module_logger = logging.getLogger('project.app')
-proj_dir = Path(__file__).parents[1]
+                    datefmt='%m-%d %H:%M:%S')
+module_logger = logging.getLogger(proj_dir.stem + '.' + str(this_file.stem))
+fh = logging.FileHandler(this_file.with_suffix('log'), mode='w')
+module_logger.addHandler(fh)
 
 
 def get_health_check():
